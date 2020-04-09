@@ -135,6 +135,20 @@ export interface ColumnDescription<T extends object = any, E = any> {
     footerTitle?: boolean;
     footerEvents?: { onClick: (e: any, column: ColumnDescription<T, E>, columnIndex: number) => void };
     footerAlign?: CellAlignment | ((column: ColumnDescription<T, E>, colIndex: number) => CellAlignment);
+
+    /**
+     * CSV Column options only used with the toolkit provider
+     */
+    csvType?: String | Number;
+    csvFormatter?: ColumnFormatter<T, E>;
+    /**
+     * csvText defaults to column.text
+     */
+    csvText?: string;
+    /**
+     * Toggle column display in CSV export
+     */
+    csvExport?: boolean;
 }
 
 /**

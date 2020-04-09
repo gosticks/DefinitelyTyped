@@ -79,7 +79,7 @@ const productColumns: Array<ColumnDescription<Product>> = [
 ];
 
 /**
- * Toolkit with custom search test test
+ * Toolkit with custom search test
  */
 
 const CustomSearch = (props: InjectedSearchProps) => {
@@ -93,6 +93,36 @@ const CustomSearch = (props: InjectedSearchProps) => {
 
 render(
     <ToolkitProvider data={products} keyField="id" columns={productColumns}>
+        {({ baseProps, searchProps }) => (
+            <>
+                <CustomSearch {...searchProps} />
+                <BootstrapTable {...baseProps} pagination={paginationFactory({ sizePerPage: 10, page: 1 })} />
+            </>
+        )}
+    </ToolkitProvider>,
+    document.getElementById('app'),
+);
+
+/**
+ * Toolkit CSV export test
+ */
+
+render(
+    <ToolkitProvider
+        data={products}
+        keyField="id"
+        exportCSV={{
+            fileName: 'custom.csv',
+            separator: '|',
+            ignoreHeader: true,
+            noAutoBOM: false,
+            blobType: 'text/plain;charset=utf-8',
+            exportAll: true,
+            onlyExportSelection: true,
+            onlyExportFiltered: true,
+        }}
+        columns={productColumns}
+    >
         {({ baseProps, searchProps }) => (
             <>
                 <CustomSearch {...searchProps} />
