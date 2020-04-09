@@ -107,6 +107,40 @@ render(
  * Toolkit CSV export test
  */
 
+const csvColumns: Array<ColumnDescription<Product>> = [
+    { dataField: 'id', align: 'center', sort: true, text: 'Product ID' },
+    { dataField: 'name', align: 'center', sort: true, text: 'Product Name' },
+    {
+        isDummyField: true,
+        dataField: '',
+        sort: true,
+        text: 'Product Name',
+    },
+    {
+        dataField: 'price',
+        sort: true,
+        formatter: priceFormatter,
+        text: 'Product Price',
+        headerFormatter: priceHeaderFormatter,
+        csvExport: false,
+    },
+    /**
+     * test optional dataField for dummyFields
+     */
+    {
+        isDummyField: true,
+        dataField: '',
+        sort: true,
+        formatter: priceFormatter,
+        text: 'Product Price',
+        headerFormatter: priceHeaderFormatter,
+        csvType: Number,
+        csvFormatter: value => value,
+        csvText: 'Price',
+        csvExport: true,
+    },
+];
+
 render(
     <ToolkitProvider
         data={products}

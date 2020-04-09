@@ -139,7 +139,10 @@ export interface ColumnDescription<T extends object = any, E = any> {
     /**
      * CSV Column options only used with the toolkit provider
      */
-    csvType?: String | Number;
+    /**
+     * export csv cell type can be Number or String
+     */
+    csvType?: object;
     csvFormatter?: ColumnFormatter<T, E>;
     /**
      * csvText defaults to column.text
