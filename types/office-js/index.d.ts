@@ -1,6 +1,6 @@
 // Type definitions for Office.js 1.0
 // Project: https://github.com/OfficeDev/office-js
-// Definitions by: OfficeDev <https://github.com/OfficeDev>, Michael Zlatkovsky <https://github.com/Zlatkovsky>, Ricky Kirkham <https://github.com/Rick-Kirkham>, Alex Jerabek <https://github.com/AlexJerabek>, Elizabeth Samuel <https://github.com/ElizabethSamuel-MSFT>, Sudhi Ramamurthy <https://github.com/sumurthy>
+// Definitions by: OfficeDev <https://github.com/OfficeDev>, Ricky Kirkham <https://github.com/Rick-Kirkham>, Alex Jerabek <https://github.com/AlexJerabek>, Elizabeth Samuel <https://github.com/ElizabethSamuel-MSFT>, Sudhi Ramamurthy <https://github.com/sumurthy>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.4
 
@@ -782,10 +782,6 @@ declare namespace Office {
         *
         * Do not use a dialog box to interact with a document. Use a task pane instead.
         * 
-        * For a design pattern that you can use to create a dialog box, see 
-        * {@link https://github.com/OfficeDev/Office-Add-in-UX-Design-Patterns/blob/master/Patterns/Client_Dialog.md | Client Dialog}  in the Office 
-        * Add-in UX Design Patterns repository on GitHub.
-        * 
         * **displayDialogAsync Errors**:
         * 
         * <table>
@@ -886,10 +882,6 @@ declare namespace Office {
         * - Temporarily increase the surface area that a user has available to complete a task.
         *
         * Do not use a dialog box to interact with a document. Use a task pane instead.
-        * 
-        * For a design pattern that you can use to create a dialog box, see 
-        * {@link https://github.com/OfficeDev/Office-Add-in-UX-Design-Patterns/blob/master/Patterns/Client_Dialog.md | Client Dialog}  in the Office 
-        * Add-in UX Design Patterns repository on GitHub.
         * 
         * **displayDialogAsync Errors**:
         * 
@@ -1035,7 +1027,8 @@ declare namespace Office {
      */
     interface AsyncContextOptions {
         /**
-         * A user-defined item of any type that is returned, unchanged, in the asyncContext property of the AsyncResult object that is passed to a callback.
+         * A user-defined item of any type that is returned, unchanged, in the `asyncContext` property of the `AsyncResult` object
+         * that is passed to a callback.
          */
         asyncContext?: any
     }
@@ -10341,10 +10334,8 @@ declare namespace Office {
          *
          * @param formData - A string that contains text and HTML and that represents the body of the reply form. The string is limited to 32 KB
          *                   OR a {@link Office.ReplyFormData | ReplyFormData} object that contains body or attachment data and a callback function.
-         * @param callback - Optional. When the method completes, the function passed in the `callback` parameter is called with a single parameter, 
-         *                `asyncResult`, which is an `Office.AsyncResult` object.
          */
-        displayReplyAllForm(formData: string | ReplyFormData, callback?: (asyncResult: Office.AsyncResult<void>) => void): void;
+        displayReplyAllForm(formData: string | ReplyFormData): void;
         /**
          * Displays a reply form that includes only the sender of the selected message or the organizer of the selected appointment.
          *
@@ -10366,10 +10357,8 @@ declare namespace Office {
          *
          * @param formData - A string that contains text and HTML and that represents the body of the reply form. The string is limited to 32 KB
          *                   OR a {@link Office.ReplyFormData | ReplyFormData} object that contains body or attachment data and a callback function.
-         * @param callback - Optional. When the method completes, the function passed in the `callback` parameter is called with a single parameter, 
-         *                `asyncResult`, which is an `Office.AsyncResult` object.
          */
-        displayReplyForm(formData: string | ReplyFormData, callback?: (asyncResult: Office.AsyncResult<void>) => void): void;
+        displayReplyForm(formData: string | ReplyFormData): void;
         /**
          * Gets an attachment from a message or appointment and returns it as an `AttachmentContent` object.
          * 
@@ -11133,11 +11122,11 @@ declare namespace Office {
     /**
      * Represents the categories on an item.
      * 
-     * In Outlook, a user can group messages and appointments by using a category to color-code them.
+     * In Outlook, a user can tag messages and appointments by using a category to color-code them.
      * The user defines {@link Office.MasterCategories | categories in a master list} on their mailbox.
      * They can then apply one or more categories to an item.
      *
-     * **Important**: In Outlook on the web, you can't use the API to manage categories on a message in Read mode.
+     * **Important**: In Outlook on the web, you can't use the API to manage categories applied to a message in Compose mode.
      *
      * [Api set: Mailbox 1.8]
      *
@@ -11547,7 +11536,7 @@ declare namespace Office {
          * @param callback Optional. When the method completes, the function passed in the `callback` parameter is called with a single parameter, 
          *                `asyncResult`, which is an `Office.AsyncResult` object. Check the `status` property of `asyncResult` to determine if the call succeeded.
          */
-        addAsync(locationIdentifiers: LocationIdentifier[], options?: Office.AsyncContextOptions, callback?: (asyncResult: Office.AsyncResultStatus) => void): void;
+        addAsync(locationIdentifiers: LocationIdentifier[], options?: Office.AsyncContextOptions, callback?: (asyncResult: Office.AsyncResult<void>) => void): void;
         /**
          * Adds to the set of locations associated with the appointment.
          * 
@@ -11567,7 +11556,7 @@ declare namespace Office {
          * @param callback Optional. When the method completes, the function passed in the `callback` parameter is called with a single parameter, 
          *                `asyncResult`, which is an `Office.AsyncResult` object. Check the `status` property of `asyncResult` to determine if the call succeeded.
          */
-        addAsync(locationIdentifiers: LocationIdentifier[], callback?: (asyncResult: Office.AsyncResultStatus) => void): void;
+        addAsync(locationIdentifiers: LocationIdentifier[], callback?: (asyncResult: Office.AsyncResult<void>) => void): void;
         /**
          * Gets the set of locations associated with the appointment.
          * 
@@ -11619,7 +11608,7 @@ declare namespace Office {
          * @param callback Optional. When the method completes, the function passed in the `callback` parameter is called with a single parameter, 
          *                `asyncResult`, which is an `Office.AsyncResult` object. Check the `status` property of `asyncResult` to determine if the call succeeded.
          */
-        removeAsync(locationIdentifiers: LocationIdentifier[], options?: Office.AsyncContextOptions, callback?: (asyncResult: Office.AsyncResultStatus) => void): void;
+        removeAsync(locationIdentifiers: LocationIdentifier[], options?: Office.AsyncContextOptions, callback?: (asyncResult: Office.AsyncResult<void>) => void): void;
         /**
          * Removes the set of locations associated with the appointment.
          * 
@@ -11637,7 +11626,7 @@ declare namespace Office {
          * @param callback Optional. When the method completes, the function passed in the `callback` parameter is called with a single parameter, 
          *                `asyncResult`, which is an `Office.AsyncResult` object. Check the `status` property of `asyncResult` to determine if the call succeeded.
          */
-        removeAsync(locationIdentifiers: LocationIdentifier[], callback?: (asyncResult: Office.AsyncResultStatus) => void): void;
+        removeAsync(locationIdentifiers: LocationIdentifier[], callback?: (asyncResult: Office.AsyncResult<void>) => void): void;
     }
     /**
      * Provides the current enhanced locations when the `Office.EventType.EnhancedLocationsChanged` event is raised.
@@ -12759,9 +12748,11 @@ declare namespace Office {
     /**
      * Represents the categories master list on the mailbox.
      * 
-     * In Outlook, a user can group messages and appointments by using a category to color-code them.
+     * In Outlook, a user can tag messages and appointments by using a category to color-code them.
      * The user defines categories in a master list on their mailbox. They can then apply one or more categories to an item.
      *
+     * **Important**: In delegate or shared scenarios, the delegate can get the categories in the master list but can't add or remove categories.
+     * 
      * [Api set: Mailbox 1.8]
      *
      * @remarks
@@ -12994,6 +12985,8 @@ declare namespace Office {
         body: Body;
         /**
          * Gets an object that provides methods for managing the item's categories.
+         *
+         * **Important**: In Outlook on the web, you can't use the API to manage categories on a message in Compose mode.
          *
          * [Api set: Mailbox 1.8]
          *
@@ -13948,8 +13941,6 @@ declare namespace Office {
         /**
          * Gets an object that provides methods for managing the item's categories.
          *
-         * **Important**: In Outlook on the web, you can't use the API to manage categories on a message in Read mode.
-         *
          * [Api set: Mailbox 1.8]
          *
          * @remarks
@@ -14327,10 +14318,8 @@ declare namespace Office {
          *
          * @param formData - A string that contains text and HTML and that represents the body of the reply form. The string is limited to 32 KB
          *                   OR a {@link Office.ReplyFormData | ReplyFormData} object that contains body or attachment data and a callback function.
-         * @param callback - Optional. When the method completes, the function passed in the `callback` parameter is called with a single parameter, 
-         *                `asyncResult`, which is an `Office.AsyncResult` object.
          */
-        displayReplyAllForm(formData: string | ReplyFormData, callback?: (asyncResult: Office.AsyncResult<void>) => void): void;
+        displayReplyAllForm(formData: string | ReplyFormData): void;
         /**
          * Displays a reply form that includes only the sender of the selected message or the organizer of the selected appointment.
          *
@@ -14352,10 +14341,8 @@ declare namespace Office {
          *
          * @param formData - A string that contains text and HTML and that represents the body of the reply form. The string is limited to 32 KB
          *                   OR a {@link Office.ReplyFormData | ReplyFormData} object that contains body or attachment data and a callback function.
-         * @param callback - Optional. When the method completes, the function passed in the `callback` parameter is called with a single parameter,
-         *                `asyncResult`, which is an `Office.AsyncResult` object.
          */
-        displayReplyForm(formData: string | ReplyFormData, callback?: (asyncResult: Office.AsyncResult<void>) => void): void;
+        displayReplyForm(formData: string | ReplyFormData): void;
         /**
          * Gets all the internet headers for the message as a string.
          * 
@@ -15333,7 +15320,7 @@ declare namespace Office {
          * 
          * **{@link https://docs.microsoft.com/office/dev/add-ins/outlook/outlook-add-ins-overview#extension-points | Applicable Outlook mode}**: Compose or Read
          */
-        recurrenceProperties: RecurrenceProperties;
+        recurrenceProperties?: RecurrenceProperties;
         /**
          * Gets or sets the properties of the recurring appointment series.
          * 
@@ -15345,7 +15332,7 @@ declare namespace Office {
          * 
          * **{@link https://docs.microsoft.com/office/dev/add-ins/outlook/outlook-add-ins-overview#extension-points | Applicable Outlook mode}**: Compose or Read
          */
-        recurrenceTimeZone: RecurrenceTimeZone;
+        recurrenceTimeZone?: RecurrenceTimeZone;
         /**
          * Gets or sets the type of the recurring appointment series.
          * 
@@ -15494,28 +15481,28 @@ declare namespace Office {
         /**
          * Represents the day of the month.
          */
-        dayOfMonth: number;
+        dayOfMonth?: number;
         /**
          * Represents the day of the week or type of day, for example, weekend day vs weekday.
          */
-        dayOfWeek: MailboxEnums.Days | string;
+        dayOfWeek?: MailboxEnums.Days | string;
         /**
          * Represents the set of days for this recurrence. Valid values are: 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', and 'Sun'.
          */
-        days: MailboxEnums.Days[] | string[];
+        days?: MailboxEnums.Days[] | string[];
         /**
          * Represents the number of the week in the selected month e.g. 'first' for first week of the month.
          */
-        weekNumber: MailboxEnums.WeekNumber | string;
+        weekNumber?: MailboxEnums.WeekNumber | string;
         /**
          * Represents the month.
          */
-        month: MailboxEnums.Month | string;
+        month?: MailboxEnums.Month | string;
         /**
          * Represents your chosen first day of the week otherwise the default is the value in the current user's settings. 
          * Valid values are: 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', and 'Sun'.
          */
-        firstDayOfWeek: MailboxEnums.Days | string;
+        firstDayOfWeek?: MailboxEnums.Days | string;
     }
     /**
      * Represents the time zone of the recurrence.
@@ -15537,7 +15524,7 @@ declare namespace Office {
         /**
          * Integer value representing the difference in minutes between the local time zone and UTC at the date that the meeting series began.
          */
-        offset: number;
+        offset?: number;
     }
     /**
      * A file or item attachment. Used when displaying a reply form.
@@ -15579,9 +15566,14 @@ declare namespace Office {
         attachments?: ReplyFormAttachment[];
         /**
          * When the reply display call completes, the function passed in the callback parameter is called with a single parameter, 
-         * asyncResult, which is an Office.AsyncResult object.
+         * `asyncResult`, which is an `Office.AsyncResult` object.
          */
         callback?: (asyncResult: Office.AsyncResult<any>) => void;
+        /**
+         * An object literal that contains the following property.
+         * `asyncContext`: Developers can provide any object they wish to access in the callback method.
+         */
+        options?: Office.AsyncContextOptions;
     }
     /**
      * The settings created by using the methods of the `RoamingSettings` object are saved per add-in and per user. 
@@ -17306,7 +17298,11 @@ declare namespace Excel {
     function getDataCommonPostprocess(response: any, callArgs: any): any;
     /**
      *
-     * Provides information about the binding that raised the SelectionChanged event.
+     * Provides information about the selection that raised the "SelectionChanged" event.
+     * 
+     * **Note**: If multiple, discontiguous cells are selected, 
+     * `Binding.onSelectionChanged` only reports row and column information for one selection.
+     * Use `Worksheet.onSelectionChanged` for multiple selected ranges.
      *
      * [Api set: ExcelApi 1.2]
      */
@@ -18339,8 +18335,10 @@ declare namespace Excel {
          */
         suspendApiCalculationUntilNextSync(): void;
         /**
-         * Suspends sceen updating until the next "context.sync()" is called.
-         *
+         * Suspends screen updating until the next `context.sync()`is called.
+         * 
+         * **Note**: Don't call `suspendScreenUpdatingUntilNextSync` repeatedly (such as in a loop). Repeated calls will cause the Excel window to flicker.
+         * 
          * [Api set: ExcelApi 1.9]
          */
         suspendScreenUpdatingUntilNextSync(): void;
@@ -22096,8 +22094,12 @@ declare namespace Excel {
          */
         readonly onDataChanged: OfficeExtension.EventHandlers<Excel.BindingDataChangedEventArgs>;
         /**
-         *
+         * 
          * Occurs when the selected content in the binding is changed.
+         * 
+         * **Note**: If multiple, discontiguous cells are selected, 
+         * `Binding.onSelectionChanged` only reports row and column information for one selection. 
+         * Use `Worksheet.onSelectionChanged` for multiple selected ranges.
          *
          * [Api set: ExcelApi 1.2]
          *
@@ -67275,6 +67277,8 @@ declare namespace Word {
     /**
      *
      * Specifies the options to be included in a search operation.
+     * 
+     * To learn more about how to use search options in the Word JavaScript APIs, read {@link https://docs.microsoft.com/office/dev/add-ins/word/search-option-guidance | Use search options to find text in your Word add-in}.
      *
      * [Api set: WordApi 1.1]
      */
